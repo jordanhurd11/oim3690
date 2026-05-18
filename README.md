@@ -1,7 +1,6 @@
 # OIM3690
 Use to make websites
 
-My nsme is Jordan Hurd. I am excited to build my website
 My name is Jordan Hurd. I am excited to build my website
 
 ## My Projects
