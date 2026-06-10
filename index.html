@@ -7,16 +7,26 @@
 
   <link rel="stylesheet" href="styles.css">
 </head>
-
-</head>
 <body>
 
   <header>
-    <h1>Jordan Hurd</h1>
-    <p>Babson College Student | Junior | Future Workout Tracking Website Creator</p>
-    <nav aria-label="Main Navigation">
+    <div class="header-top">
+      <div>
+        <h1>Jordan Hurd</h1>
+        <p>Babson College Student | Junior | Future Workout Tracking Website Creator</p>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+    <nav id="navbar" class="nav-collapsed" aria-label="Main Navigation">
       <a href="index.html">Home</a>
       <a href="about-me.html">About Me</a>
+      <a href="#lifts">Lifts</a>
+      <a href="#nutrition">Nutrition</a>
+      <a href="#progress">Progress</a>
     </nav>
   </header>
 
@@ -26,7 +36,7 @@
       <h2>About Me</h2>
       <p>
         Hi, I’m Jordan Hurd, a Junior at <a href="https://www.babson.edu" target="_blank" rel="noopener noreferrer">Babson College</a>. I am passionate about
-        </a> College. I am passionate about
+
         fitness, health, and technology, and I am currently working on creating
         a workout tracking website to help users stay consistent with their goals.
       </p>
@@ -56,6 +66,18 @@
   <footer>
     <p>© 2026 Jordan Hurd</p>
   </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navbar = document.getElementById('navbar');
+
+    hamburger.addEventListener('click', () => {
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true' ? false : true;
+      hamburger.setAttribute('aria-expanded', expanded);
+      navbar.classList.toggle('nav-collapsed');
+      navbar.classList.toggle('nav-open');
+    });
+  </script>
 
 </body>
 </html>
