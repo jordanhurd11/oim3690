@@ -5,3 +5,11 @@ My name is Jordan Hurd. I am excited to build my website
 
 ## My Projects
 - [My Personal Website] (https://jordanhurd11.github.io)
+
+## Mini Project 1: Fuel Prep (meal-creator)
+
+Live Site:
+https://jordanhurd11.github.io/meal-creator/
+
+Repository:
+https://github.com/jordanhurd11/meal-creator
