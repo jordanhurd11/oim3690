@@ -19,7 +19,7 @@ body {
     border-radius: 12px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
     padding: 30px;
 }
 
@@ -30,14 +30,108 @@ h1 {
     font-size: 28px;
 }
 
+.subject-management {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.subject-management input[type="text"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.subject-management input[type="text"]:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.subject-management button {
+    padding: 12px 25px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.subject-management button:hover {
+    background: #5568d3;
+}
+
+.subject-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.subject-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background: #f5f5f5;
+    border: 2px solid transparent;
+    border-radius: 6px 6px 0 0;
+    cursor: pointer;
+    font-weight: 500;
+    color: #666;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.subject-tab:hover {
+    background: #efefef;
+}
+
+.subject-tab.active {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+}
+
+.subject-tab .tab-name {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.delete-subject-btn {
+    padding: 2px 6px !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    font-size: 14px !important;
+    border-radius: 3px !important;
+    min-width: auto !important;
+    border: none !important;
+}
+
+.delete-subject-btn:hover {
+    background: rgba(255, 107, 107, 0.3) !important;
+}
+
 .input-container {
     display: flex;
     gap: 10px;
     margin-bottom: 25px;
+    flex-wrap: wrap;
 }
 
 input[type="text"] {
     flex: 1;
+    min-width: 200px;
     padding: 12px 15px;
     border: 2px solid #e0e0e0;
     border-radius: 6px;
@@ -46,6 +140,19 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+input[type="date"] {
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input[type="date"]:focus {
     outline: none;
     border-color: #667eea;
 }
@@ -99,6 +206,22 @@ button:active {
     color: #999;
 }
 
+.todo-item.overdue {
+    border-left: 4px solid #ff6b6b;
+}
+
+.todo-item.overdue .todo-due-date {
+    color: #ff6b6b;
+    font-weight: 600;
+}
+
+.todo-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
 input[type="checkbox"] {
     width: 20px;
     height: 20px;
@@ -109,6 +232,12 @@ input[type="checkbox"] {
     flex: 1;
     color: #333;
     word-break: break-word;
+}
+
+.todo-due-date {
+    font-size: 12px;
+    color: #999;
+    font-weight: 500;
 }
 
 .delete-btn {
@@ -154,4 +283,26 @@ input[type="checkbox"] {
 .clear-completed-btn:disabled {
     background: #ccc;
     cursor: not-allowed;
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    background: #4caf50;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }

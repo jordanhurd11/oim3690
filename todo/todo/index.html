@@ -7,15 +7,33 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="notification" id="notification"></div>
+    
     <div class="container">
         <h1>📝 My To-Do List</h1>
         
+        <div class="subject-management">
+            <input 
+                type="text" 
+                id="subjectInput" 
+                placeholder="Create new subject..."
+                autocomplete="off"
+            >
+            <button id="addSubjectBtn">Add Subject</button>
+        </div>
+
+        <div class="subject-tabs" id="subjectTabs"></div>
+
         <div class="input-container">
             <input 
                 type="text" 
                 id="todoInput" 
                 placeholder="Add a new task..."
                 autocomplete="off"
+            >
+            <input 
+                type="date" 
+                id="dueDateInput"
             >
             <button id="addBtn">Add</button>
         </div>
