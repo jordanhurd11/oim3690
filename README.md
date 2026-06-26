@@ -13,3 +13,9 @@ https://jordanhurd11.github.io/meal-creator/
 
 Repository:
 https://github.com/jordanhurd11/meal-creator
+
+## Mini Project 2: Workout Tracker 
+
+Live Site: https://jordanhurd11.github.io/workout-tracker/
+
+Repository: https://github.com/jordanhurd11/workout-tracker
