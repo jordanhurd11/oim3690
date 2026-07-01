@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Post Message</title>
+</head>
+<body>
+  <h1>Send a Message</h1>
+  
+  <div>
+    <input 
+      type="text" 
+      id="messageInput" 
+      placeholder="Enter your message here..." 
+      style="padding: 8px; width: 300px; font-size: 16px;"
+    />
+    <button 
+      onclick="sendMessage()" 
+      style="padding: 8px 16px; font-size: 16px; cursor: pointer;"
+    >
+      Send
+    </button>
+  </div>
+  
+  <div id="response" style="margin-top: 20px; padding: 10px; border: 1px solid #ccc; display: none;"></div>
+
+  <script>
+    async function postMessage(text) {
+      const response = await fetch("https://oim.zhili.dev/message", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Token": "jordanjordan"   // <- your first name, twice
+        },
+        body: JSON.stringify({ message: text })
+      });
+      return await response.json();
+    }
+    
+    async function sendMessage() {
+      const input = document.getElementById("messageInput");
+      const text = input.value.trim();
+      
+      if (!text) {
+        alert("Please enter a message!");
+        return;
+      }
+      
+      const responseDiv = document.getElementById("response");
+      responseDiv.textContent = "Sending...";
+      responseDiv.style.display = "block";
+      
+      try {
+        const result = await postMessage(text);
+        responseDiv.textContent = "Response: " + JSON.stringify(result);
+        input.value = "";
+      } catch (error) {
+        responseDiv.textContent = "Error: " + error.message;
+      }
+    }
+    
+    // Allow sending message with Enter key
+    document.getElementById("messageInput").addEventListener("keypress", function(e) {
+      if (e.key === "Enter") {
+        sendMessage();
+      }
+    });
+  </script>
+</body>
+</html>
