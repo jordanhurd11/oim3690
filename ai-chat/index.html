@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Demo</title>
+  </head>
+  <body>
+    <textarea id="prompt" placeholder="Ask AI anything..."></textarea>
+    <button id="askBtn">Ask</button>
+    <p id="answer"></p>
+    <script src="config.js"></script>
+    <script>
+      async function askAI(prompt) {
+        const response = await fetch("https://api.openai.com/v1/responses", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${OPENAI_API_KEY}`,
+          },
+          body: JSON.stringify({ model: "gpt-5-nano", input: prompt }),
+        });
+        const data = await response.json();
+        const message = data.output.find((item) => item.type === "message");
+        return message.content[0].text;
+      }
+
+      document.querySelector("#askBtn").addEventListener("click", async () => {
+        const prompt = document.querySelector("#prompt").value;
+        const answerEl = document.querySelector("#answer");
+        answerEl.textContent = "Thinking...";
+        try {
+          answerEl.textContent = await askAI(prompt);
+        } catch (error) {
+          answerEl.textContent = "Error: " + error.message;
+        }
+      });
+    </script>
+  </body>
+</html>
