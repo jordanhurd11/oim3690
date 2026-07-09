@@ -3,38 +3,197 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Demo</title>
-  </head>
-  <body>
-    <textarea id="prompt" placeholder="Ask AI anything..."></textarea>
-    <button id="askBtn">Ask</button>
-    <p id="answer"></p>
-    <script src="config.js"></script>
-    <script>
-      async function askAI(prompt) {
-        const response = await fetch("https://api.openai.com/v1/responses", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${OPENAI_API_KEY}`,
-          },
-          body: JSON.stringify({ model: "gpt-5-nano", input: prompt }),
-        });
-        const data = await response.json();
-        const message = data.output.find((item) => item.type === "message");
-        return message.content[0].text;
+    <title>AI Chat</title>
+    <style>
+      * {
+        box-sizing: border-box;
       }
 
-      document.querySelector("#askBtn").addEventListener("click", async () => {
-        const prompt = document.querySelector("#prompt").value;
-        const answerEl = document.querySelector("#answer");
-        answerEl.textContent = "Thinking...";
-        try {
-          answerEl.textContent = await askAI(prompt);
-        } catch (error) {
-          answerEl.textContent = "Error: " + error.message;
-        }
-      });
-    </script>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        background: #343541;
+        color: #ececf1;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+          Arial, sans-serif;
+      }
+
+      header {
+        flex: 0 0 auto;
+        padding: 14px 20px;
+        text-align: center;
+        font-size: 15px;
+        font-weight: 600;
+        color: #ececf1;
+        background: #343541;
+        border-bottom: 1px solid #4d4d4f;
+      }
+
+      #chat {
+        flex: 1 1 auto;
+        overflow-y: auto;
+      }
+
+      .row {
+        display: flex;
+        gap: 16px;
+        padding: 20px;
+        max-width: 768px;
+        margin: 0 auto;
+      }
+
+      .row.assistant {
+        background: #444654;
+        max-width: 100%;
+      }
+
+      .row.assistant > .row-inner {
+        display: flex;
+        gap: 16px;
+        max-width: 768px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .row.user {
+        display: flex;
+      }
+
+      .avatar {
+        flex: 0 0 auto;
+        width: 30px;
+        height: 30px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+      }
+
+      .avatar.user {
+        background: #5437db;
+      }
+
+      .avatar.assistant {
+        background: #19c37d;
+      }
+
+      .bubble {
+        white-space: pre-wrap;
+        line-height: 1.6;
+        font-size: 15px;
+        padding-top: 4px;
+      }
+
+      .bubble.thinking {
+        color: #9a9aa5;
+        font-style: italic;
+      }
+
+      #empty-state {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        color: #9a9aa5;
+        font-size: 15px;
+        text-align: center;
+        padding: 20px;
+      }
+
+      footer {
+        flex: 0 0 auto;
+        padding: 16px 20px 20px;
+        background: #343541;
+      }
+
+      #input-bar {
+        max-width: 768px;
+        margin: 0 auto;
+        display: flex;
+        align-items: flex-end;
+        gap: 8px;
+        background: #40414f;
+        border: 1px solid #565869;
+        border-radius: 12px;
+        padding: 10px 10px 10px 16px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      }
+
+      #prompt {
+        flex: 1 1 auto;
+        resize: none;
+        border: none;
+        outline: none;
+        background: transparent;
+        color: #ececf1;
+        font-family: inherit;
+        font-size: 15px;
+        line-height: 1.5;
+        max-height: 200px;
+        padding: 4px 0;
+      }
+
+      #prompt::placeholder {
+        color: #8e8ea0;
+      }
+
+      #askBtn {
+        flex: 0 0 auto;
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        border: none;
+        background: #19c37d;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #askBtn:disabled {
+        background: #565869;
+        cursor: default;
+      }
+
+      #askBtn:hover:not(:disabled) {
+        background: #15a367;
+      }
+
+      .disclaimer {
+        text-align: center;
+        font-size: 12px;
+        color: #8e8ea0;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>AI Chat</header>
+
+    <div id="chat">
+      <div id="empty-state">Ask me anything to get started.</div>
+    </div>
+
+    <footer>
+      <div id="input-bar">
+        <textarea id="prompt" placeholder="Message AI Chat..." rows="1"></textarea>
+        <button id="askBtn" aria-label="Send">&#8593;</button>
+      </div>
+      <div class="disclaimer">AI can make mistakes. Check important info.</div>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
