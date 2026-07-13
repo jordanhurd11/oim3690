@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Playlist</title>
+</head>
+<body>
+
+  <h1>My Playlist</h1>
+  <ul id="list"></ul>
+
+  <script>
+    const songs = [
+      "Song A",
+      "Song B",
+      "Song C"
+    ];
+
+    songs.forEach(function(song) {
+      const li = document.createElement("li");
+      li.textContent = song;
+      document.getElementById("list").appendChild(li);
+    });
+  </script>
+
+</body>
+</html>
