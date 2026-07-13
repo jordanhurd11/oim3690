@@ -19,3 +19,11 @@ https://github.com/jordanhurd11/meal-creator
 Live Site: https://jordanhurd11.github.io/workout-tracker/
 
 Repository: https://github.com/jordanhurd11/workout-tracker
+
+
+## Mini Project 3: Golf
+
+Live Site: https://jordanhurd11.github.io/golf/
+
+Repository: https://github.com/jordanhurd11/golf
+
