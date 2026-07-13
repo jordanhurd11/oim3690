@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data App</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: white;
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.5em;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    #list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .item-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .item-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 15px;
+      gap: 10px;
+    }
+
+    .item-header h3 {
+      color: #333;
+      font-size: 1.3em;
+      flex: 1;
+    }
+
+    .category-badge {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8em;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .description {
+      color: #666;
+      font-size: 0.95em;
+      line-height: 1.4;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .item-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+    }
+
+    .item-info {
+      display: flex;
+      gap: 15px;
+    }
+
+    .price {
+      font-size: 1.4em;
+      font-weight: bold;
+      color: #667eea;
+    }
+
+    .rating {
+      color: #ff9800;
+      font-size: 1em;
+      font-weight: bold;
+    }
+
+    .stock-status {
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.85em;
+      font-weight: bold;
+    }
+
+    .in-stock {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .out-of-stock {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>📦 Product Catalog</h1>
+    <ul id="list"></ul>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+
+</body>
+</html>
