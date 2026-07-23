@@ -21,7 +21,7 @@ Live Site: https://jordanhurd11.github.io/workout-tracker/
 Repository: https://github.com/jordanhurd11/workout-tracker
 
 
-## Mini Project 3: Golf
+## Mini Project 3: Golf Course Finder
 
 Live Site: https://jordanhurd11.github.io/golf/
 
